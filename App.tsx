@@ -139,7 +139,7 @@ const ProductCard = ({
 }) => (
   <Pressable style={styles.productCard} onPress={onOpen}>
     <View style={styles.productImageWrap}>
-      <Image source={product.image} style={styles.productImage} />
+      <Image source={product.image} style={styles.productImage} resizeMode="cover" />
       <Pressable
         hitSlop={6}
         style={styles.favoriteButton}
@@ -514,7 +514,7 @@ const CartScreen = ({
           <View style={styles.cartList}>
             {lines.map(({ product, quantity }) => (
               <View key={product.id} style={styles.cartItem}>
-                <Image source={product.image} style={styles.cartImage} />
+              <Image source={product.image} style={styles.cartImage} resizeMode="cover" />
                 <View style={styles.cartDetails}>
                   <View>
                     <Text style={styles.cartProductName}>{product.name}</Text>
@@ -808,13 +808,14 @@ const ProductModal = ({
       presentationStyle="pageSheet"
       onRequestClose={onClose}
     >
+      <View style={styles.modalBackdrop}>
       <SafeAreaView style={styles.modalPage}>
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.productModalContent}
         >
           <View style={styles.modalImageWrap}>
-            <Image source={product.image} style={styles.modalImage} />
+            <Image source={product.image} style={styles.modalImage} resizeMode="cover" />
             <LinearGradient
               colors={['rgba(0,0,0,.3)', 'transparent']}
               style={styles.modalImageGradient}
@@ -880,6 +881,7 @@ const ProductModal = ({
           </View>
         </View>
       </SafeAreaView>
+      </View>
     </Modal>
   );
 };
@@ -911,6 +913,7 @@ const InvoiceModal = ({
     presentationStyle="pageSheet"
     onRequestClose={onClose}
   >
+    <View style={styles.modalBackdrop}>
     <SafeAreaView style={styles.invoiceModalPage}>
       <View style={styles.invoiceModalHeader}>
         <Pressable style={styles.invoiceCloseButton} onPress={onClose}>
@@ -1024,6 +1027,7 @@ const InvoiceModal = ({
         </Pressable>
       </View>
     </SafeAreaView>
+    </View>
   </Modal>
 );
 
@@ -1525,7 +1529,7 @@ const styles = StyleSheet.create({
     ...shadow,
   },
   productImageWrap: { height: 154, backgroundColor: '#EAE1D5' },
-  productImage: { width: '100%', height: '100%', resizeMode: 'cover' },
+  productImage: { width: '100%', height: '100%' },
   favoriteButton: {
     position: 'absolute',
     top: 9,
@@ -1764,7 +1768,6 @@ const styles = StyleSheet.create({
     width: 93,
     minHeight: 96,
     borderRadius: 13,
-    resizeMode: 'cover',
   },
   cartDetails: {
     flex: 1,
@@ -2194,10 +2197,21 @@ const styles = StyleSheet.create({
     fontFamily: 'Vazirmatn_600SemiBold',
     fontSize: 10,
   },
-  modalPage: { flex: 1, backgroundColor: colors.cream },
+  modalBackdrop: {
+    flex: 1,
+    width: '100%',
+    backgroundColor: '#D8D0C2',
+    alignItems: 'center',
+  },
+  modalPage: {
+    flex: 1,
+    width: '100%',
+    maxWidth: 480,
+    backgroundColor: colors.cream,
+  },
   productModalContent: { paddingBottom: 108 },
   modalImageWrap: { height: 390, backgroundColor: '#E9E0D4' },
-  modalImage: { width: '100%', height: '100%', resizeMode: 'cover' },
+  modalImage: { width: '100%', height: '100%' },
   modalImageGradient: {
     position: 'absolute',
     top: 0,
@@ -2345,7 +2359,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Vazirmatn_400Regular',
     fontSize: 9,
   },
-  invoiceModalPage: { flex: 1, backgroundColor: '#EDE8DF' },
+  invoiceModalPage: {
+    flex: 1,
+    width: '100%',
+    maxWidth: 480,
+    backgroundColor: '#EDE8DF',
+  },
   invoiceModalHeader: {
     minHeight: 76,
     paddingHorizontal: 20,
