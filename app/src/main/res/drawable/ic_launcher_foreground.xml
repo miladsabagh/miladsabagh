@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- crown -->
+    <path
+        android:fillColor="#FFD97A"
+        android:pathData="M40,30 L68,30 L78,44 L30,44 Z" />
+    <!-- table facet -->
+    <path
+        android:fillColor="#FFEFC2"
+        android:pathData="M46,30 L62,30 L66,44 L42,44 Z" />
+    <!-- pavilion -->
+    <path
+        android:fillColor="#E3A927"
+        android:pathData="M30,44 L78,44 L54,80 Z" />
+    <path
+        android:fillColor="#C98C14"
+        android:pathData="M54,44 L78,44 L54,80 Z" />
+    <!-- facet lines -->
+    <path
+        android:pathData="M40,30 L42,44 M68,30 L66,44 M42,44 L54,80 M66,44 L54,80 M54,44 L54,80"
+        android:strokeColor="#8A6410"
+        android:strokeWidth="1.1"
+        android:strokeAlpha="0.55" />
+    <path
+        android:pathData="M30,44 L78,44"
+        android:strokeColor="#8A6410"
+        android:strokeWidth="1.4"
+        android:strokeAlpha="0.7" />
+</vector>
