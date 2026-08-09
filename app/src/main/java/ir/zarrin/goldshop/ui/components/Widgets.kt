@@ -163,10 +163,11 @@ fun DecimalField(
 fun <T> DropdownSelector(
     label: String,
     options: List<T>,
-    selected: T,
+    selected: T?,
     optionLabel: (T) -> String,
     onSelect: (T) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    placeholder: String = "انتخاب کنید"
 ) {
     var expanded by remember { mutableStateOf(false) }
     ExposedDropdownMenuBox(
@@ -175,7 +176,7 @@ fun <T> DropdownSelector(
         modifier = modifier
     ) {
         OutlinedTextField(
-            value = optionLabel(selected),
+            value = selected?.let(optionLabel) ?: placeholder,
             onValueChange = {},
             readOnly = true,
             label = { Text(label) },

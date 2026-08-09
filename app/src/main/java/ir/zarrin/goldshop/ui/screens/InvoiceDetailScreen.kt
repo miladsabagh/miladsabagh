@@ -32,6 +32,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedIconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -49,6 +50,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -127,30 +129,26 @@ fun InvoiceDetailScreen(
                             .padding(14.dp),
                         horizontalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
-                        OutlinedButton(
+                        OutlinedIconButton(
                             onClick = { InvoiceSharing.shareText(context, document) },
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.size(48.dp)
                         ) {
                             Icon(
                                 Icons.AutoMirrored.Filled.Message,
-                                contentDescription = null,
-                                modifier = Modifier.size(18.dp)
+                                contentDescription = "ارسال متن فاکتور",
+                                modifier = Modifier.size(20.dp)
                             )
-                            Spacer(Modifier.width(6.dp))
-                            Text("متن")
                         }
-                        OutlinedButton(
+                        OutlinedIconButton(
                             onClick = {
                                 scope.launch {
                                     runCatching { InvoiceSharing.print(context, document) }
                                         .onFailure { snackbarHostState.showSnackbar("چاپ در این دستگاه در دسترس نیست.") }
                                 }
                             },
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.size(48.dp)
                         ) {
-                            Icon(Icons.Filled.Print, contentDescription = null, modifier = Modifier.size(18.dp))
-                            Spacer(Modifier.width(6.dp))
-                            Text("چاپ")
+                            Icon(Icons.Filled.Print, contentDescription = "چاپ", modifier = Modifier.size(20.dp))
                         }
                         Button(
                             onClick = {
@@ -159,11 +157,13 @@ fun InvoiceDetailScreen(
                                         .onFailure { snackbarHostState.showSnackbar("ساخت فایل PDF ناموفق بود.") }
                                 }
                             },
-                            modifier = Modifier.weight(1.3f)
+                            modifier = Modifier
+                                .weight(1f)
+                                .height(48.dp)
                         ) {
                             Icon(Icons.Filled.PictureAsPdf, contentDescription = null, modifier = Modifier.size(18.dp))
-                            Spacer(Modifier.width(6.dp))
-                            Text("خروجی PDF")
+                            Spacer(Modifier.width(8.dp))
+                            Text("خروجی PDF", maxLines = 1)
                         }
                     }
                 }
@@ -242,8 +242,8 @@ private fun InvoicePaper(document: InvoiceDocument) {
                         )
                     }
                 }
+                Spacer(Modifier.width(12.dp))
                 Column(horizontalAlignment = Alignment.End) {
-                    Text(document.title, style = MaterialTheme.typography.titleSmall)
                     Text(
                         "شماره: ${document.numberLabel}",
                         style = MaterialTheme.typography.bodySmall,
@@ -258,8 +258,22 @@ private fun InvoicePaper(document: InvoiceDocument) {
             }
 
             Spacer(Modifier.height(12.dp))
-            HorizontalDivider()
-            Spacer(Modifier.height(10.dp))
+            Surface(
+                shape = RoundedCornerShape(10.dp),
+                color = MaterialTheme.colorScheme.primaryContainer,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(
+                    document.title,
+                    style = MaterialTheme.typography.titleSmall,
+                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp)
+                )
+            }
+            Spacer(Modifier.height(12.dp))
 
             Text("مشخصات خریدار", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary)
             Spacer(Modifier.height(4.dp))

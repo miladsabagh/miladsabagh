@@ -234,8 +234,8 @@ fun InvoiceEditorScreen(
                             DropdownSelector(
                                 label = "انتخاب از دفتر مشتریان",
                                 options = state.customers,
-                                selected = state.customers.firstOrNull { it.id == state.invoice.customerId }
-                                    ?: state.customers.first(),
+                                selected = state.customers.firstOrNull { it.id == state.invoice.customerId },
+                                placeholder = "مشتری متفرقه",
                                 optionLabel = { customer ->
                                     if (customer.phone.isBlank()) {
                                         customer.name
@@ -425,6 +425,7 @@ fun InvoiceEditorScreen(
             products = state.products,
             currency = currency,
             baseGoldRate = state.invoice.baseGoldRate,
+            taxPercent = state.invoice.taxPercent,
             onDismiss = { showProductPicker = false },
             onPick = { product ->
                 viewModel.addItem(viewModel.itemFromProduct(product))
@@ -510,6 +511,7 @@ private fun ProductPickerSheet(
     products: List<Product>,
     currency: Currency,
     baseGoldRate: Long,
+    taxPercent: Double,
     onDismiss: () -> Unit,
     onPick: (Product) -> Unit
 ) {
@@ -557,6 +559,7 @@ private fun ProductPickerSheet(
                                 profitPercent = product.profitPercent,
                                 stonePrice = product.stonePrice,
                                 taxBasis = product.kind.defaultTaxBasis,
+                                taxPercent = taxPercent,
                                 unitPriceOverride = product.unitPriceOverride
                             ).toLineInput()
                         )

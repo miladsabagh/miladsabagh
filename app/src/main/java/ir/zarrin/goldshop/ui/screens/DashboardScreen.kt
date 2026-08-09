@@ -194,13 +194,13 @@ fun DashboardScreen(
                             onClick = onNewInvoice
                         )
                         QuickAction(
-                            label = "کالای جدید",
+                            label = "انبار کالا",
                             icon = Icons.Filled.Diamond,
                             modifier = Modifier.weight(1f),
                             onClick = onOpenProducts
                         )
                         QuickAction(
-                            label = "مشتری جدید",
+                            label = "مشتریان",
                             icon = Icons.Filled.PersonAdd,
                             modifier = Modifier.weight(1f),
                             onClick = onOpenCustomers
