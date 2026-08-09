@@ -61,7 +61,8 @@ class InvoicesViewModel(
 
 data class InvoiceDetailState(
     val invoice: InvoiceWithItems? = null,
-    val settings: AppSettings = AppSettings()
+    val settings: AppSettings = AppSettings(),
+    val loading: Boolean = true
 )
 
 class InvoiceDetailViewModel(
@@ -74,7 +75,7 @@ class InvoiceDetailViewModel(
         repository.observeById(invoiceId),
         settingsRepository.settings
     ) { invoice, settings ->
-        InvoiceDetailState(invoice = invoice, settings = settings)
+        InvoiceDetailState(invoice = invoice, settings = settings, loading = false)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), InvoiceDetailState())
 
     fun registerPayment(id: Long, paid: Long, total: Long) {
