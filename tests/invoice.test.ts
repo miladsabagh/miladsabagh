@@ -28,11 +28,11 @@ describe("invoice pricing", () => {
 
     assert.equal(line.weightGram, 4);
     assert.equal(line.goldValue, 4000);
-    assert.equal(line.makingFee, 600);
+    assert.equal(line.makingFee, 800);
     assert.equal(line.stoneFee, 1000);
-    assert.equal(line.sellerProfit, 280);
-    assert.equal(line.vat, 88);
-    assert.equal(line.total, 5968);
+    assert.equal(line.sellerProfit, 290);
+    assert.equal(line.vat, 109);
+    assert.equal(line.total, 6199);
   });
 
   it("caps invoice discount at subtotal and keeps payable non-negative", () => {
@@ -43,8 +43,8 @@ describe("invoice pricing", () => {
       customer: { name: "مشتری", phone: "09120000000" }
     });
 
-    assert.equal(invoice.subtotal, 2984);
-    assert.equal(invoice.discount, 2984);
+    assert.equal(invoice.subtotal, 3100);
+    assert.equal(invoice.discount, 3100);
     assert.equal(invoice.payable, 0);
   });
 

@@ -1,12 +1,13 @@
 import * as Clipboard from "expo-clipboard";
-import { StatusBar } from "expo-status-bar";
 import { useMemo, useState } from "react";
+import type { ReactElement } from "react";
 import {
   I18nManager,
   Pressable,
   SafeAreaView,
   ScrollView,
   StyleSheet,
+  StatusBar,
   Text,
   TextInput,
   View
@@ -48,7 +49,7 @@ function parseNumericInput(value: string): number {
   return Number(normalized || 0);
 }
 
-function App(): JSX.Element {
+function App(): ReactElement {
   const [goldPrice, setGoldPrice] = useState("35700000");
   const [vatPercent, setVatPercent] = useState("10");
   const [discount, setDiscount] = useState("0");
@@ -95,7 +96,7 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StatusBar style="dark" />
+      <StatusBar barStyle="dark-content" />
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.hero}>
           <Text style={styles.badge}>نسخه اندروید فروشگاهی</Text>
@@ -194,7 +195,7 @@ interface LabeledInputProps {
   keyboardType?: "default" | "numeric";
 }
 
-function LabeledInput({ label, value, onChangeText, keyboardType = "numeric" }: LabeledInputProps): JSX.Element {
+function LabeledInput({ label, value, onChangeText, keyboardType = "numeric" }: LabeledInputProps): ReactElement {
   return (
     <View style={styles.inputGroup}>
       <Text style={styles.inputLabel}>{label}</Text>
@@ -217,7 +218,7 @@ interface ProductCardProps {
   onIncrease: () => void;
 }
 
-function ProductCard({ product, quantity, onDecrease, onIncrease }: ProductCardProps): JSX.Element {
+function ProductCard({ product, quantity, onDecrease, onIncrease }: ProductCardProps): ReactElement {
   return (
     <View style={styles.productCard}>
       <View style={styles.productMark}>
@@ -243,7 +244,7 @@ function ProductCard({ product, quantity, onDecrease, onIncrease }: ProductCardP
   );
 }
 
-function SummaryRow({ label, value, emphasized = false }: { label: string; value: string; emphasized?: boolean }): JSX.Element {
+function SummaryRow({ label, value, emphasized = false }: { label: string; value: string; emphasized?: boolean }): ReactElement {
   return (
     <View style={[styles.summaryRow, emphasized && styles.summaryRowEmphasized]}>
       <Text style={[styles.summaryLabel, emphasized && styles.summaryLabelEmphasized]}>{label}</Text>
