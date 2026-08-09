@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "زرین",
+    "slug": "zarrin-jewelry",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#F6F2EA",
+    "android": {
+      "package": "com.zarrin.jewelry",
+      "adaptiveIcon": {
+        "backgroundColor": "#102A26"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "name": "زرین | طلا و جواهر"
+    }
+  }
+}
