@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "زرین",
+    "slug": "zarin-jewelry",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "zarin",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#F7F5F0"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.zarin.jewelry"
+    },
+    "android": {
+      "package": "com.zarin.jewelry",
+      "adaptiveIcon": {
+        "backgroundColor": "#173A2D"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "name": "زرین | مدیریت فروش طلا و جواهر"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-print",
+      "expo-sharing"
+    ]
+  }
+}
+{
+  "plugins": [
+    "expo-status-bar",
+    "expo-sharing",
+    "expo-font"
+  ]
+}
