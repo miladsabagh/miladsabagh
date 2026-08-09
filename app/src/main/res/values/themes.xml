@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Zarrin" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">#8A6A17</item>
+        <item name="android:navigationBarColor">#FFFBF2</item>
+        <item name="android:windowBackground">#FFFBF2</item>
+    </style>
+</resources>
