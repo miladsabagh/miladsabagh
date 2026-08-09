@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gold_primary">#C9A227</color>
+    <color name="gold_primary_dark">#9C7A0F</color>
+    <color name="gold_on_primary">#FFFFFF</color>
+    <color name="ivory_background">#FFFBF2</color>
+    <color name="charcoal">#2B2620</color>
+</resources>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">طلا و جواهر</string>
+
+    <!-- Navigation -->
+    <string name="nav_dashboard">داشبورد</string>
+    <string name="nav_invoices">فاکتورها</string>
+    <string name="nav_products">کالاها</string>
+    <string name="nav_customers">مشتریان</string>
+    <string name="nav_settings">تنظیمات</string>
+
+    <!-- Common -->
+    <string name="action_save">ذخیره</string>
+    <string name="action_cancel">انصراف</string>
+    <string name="action_delete">حذف</string>
+    <string name="action_edit">ویرایش</string>
+    <string name="action_add">افزودن</string>
+    <string name="action_share">اشتراک‌گذاری</string>
+    <string name="action_search">جستجو</string>
+    <string name="action_confirm_delete_title">حذف مورد</string>
+    <string name="action_confirm_delete_message">آیا از حذف این مورد مطمئن هستید؟ این عملیات قابل بازگشت نیست.</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_gold_price_title">قیمت روز طلا (۱۸ عیار)</string>
+    <string name="dashboard_update_price">به‌روزرسانی قیمت</string>
+    <string name="dashboard_today_sales">فروش امروز</string>
+    <string name="dashboard_today_invoices_count">تعداد فاکتور امروز</string>
+    <string name="dashboard_total_customers">تعداد مشتریان</string>
+    <string name="dashboard_total_products">تعداد کالاها</string>
+    <string name="dashboard_quick_actions">دسترسی سریع</string>
+    <string name="dashboard_new_invoice">فاکتور جدید</string>
+    <string name="dashboard_new_product">افزودن کالا</string>
+    <string name="dashboard_new_customer">افزودن مشتری</string>
+    <string name="dashboard_recent_invoices">آخرین فاکتورها</string>
+
+    <!-- Products -->
+    <string name="products_title">کالاها</string>
+    <string name="product_add_title">افزودن کالا</string>
+    <string name="product_edit_title">ویرایش کالا</string>
+    <string name="product_name">نام کالا</string>
+    <string name="product_category">دسته‌بندی</string>
+    <string name="product_weight">وزن (گرم)</string>
+    <string name="product_karat">عیار</string>
+    <string name="product_labor_fee">اجرت (درصد)</string>
+    <string name="product_profit">سود (درصد)</string>
+    <string name="product_tax">مالیات (درصد)</string>
+    <string name="product_quantity">موجودی (عدد)</string>
+    <string name="product_code">کد کالا</string>
+    <string name="product_description">توضیحات</string>
+    <string name="products_empty">هنوز کالایی ثبت نشده است.</string>
+
+    <!-- Customers -->
+    <string name="customers_title">مشتریان</string>
+    <string name="customer_add_title">افزودن مشتری</string>
+    <string name="customer_edit_title">ویرایش مشتری</string>
+    <string name="customer_name">نام و نام خانوادگی</string>
+    <string name="customer_phone">شماره تماس</string>
+    <string name="customer_address">آدرس</string>
+    <string name="customer_national_id">کد ملی</string>
+    <string name="customer_notes">یادداشت</string>
+    <string name="customers_empty">هنوز مشتری‌ای ثبت نشده است.</string>
+    <string name="customer_walk_in">مشتری متفرقه</string>
+
+    <!-- Invoice -->
+    <string name="invoice_new_title">فاکتور جدید</string>
+    <string name="invoice_select_customer">انتخاب مشتری</string>
+    <string name="invoice_gold_price">قیمت طلا (هر گرم ۱۸ عیار)</string>
+    <string name="invoice_add_item">افزودن ردیف</string>
+    <string name="invoice_add_from_product">انتخاب از کالاها</string>
+    <string name="invoice_add_manual">افزودن دستی</string>
+    <string name="invoice_items">اقلام فاکتور</string>
+    <string name="invoice_subtotal">جمع کل</string>
+    <string name="invoice_discount">تخفیف</string>
+    <string name="invoice_grand_total">مبلغ قابل پرداخت</string>
+    <string name="invoice_paid_amount">مبلغ پرداخت‌شده</string>
+    <string name="invoice_remaining">مانده حساب</string>
+    <string name="invoice_notes">توضیحات فاکتور</string>
+    <string name="invoice_save">ثبت فاکتور</string>
+    <string name="invoices_title">فاکتورها</string>
+    <string name="invoices_empty">هنوز فاکتوری صادر نشده است.</string>
+    <string name="invoice_detail_title">جزئیات فاکتور</string>
+    <string name="invoice_share_pdf">اشتراک‌گذاری PDF</string>
+    <string name="invoice_number">شماره فاکتور</string>
+    <string name="invoice_date">تاریخ</string>
+    <string name="invoice_status_paid">تسویه‌شده</string>
+    <string name="invoice_status_partial">پرداخت جزئی</string>
+    <string name="invoice_status_unpaid">پرداخت‌نشده</string>
+    <string name="invoice_base_gold_value">ارزش طلا</string>
+    <string name="invoice_labor_fee_amount">اجرت</string>
+    <string name="invoice_profit_amount">سود</string>
+    <string name="invoice_tax_amount">مالیات ارزش‌افزوده</string>
+    <string name="invoice_unit_price">قیمت واحد</string>
+    <string name="invoice_line_total">جمع ردیف</string>
+    <string name="invoice_weight_grams">%1$s گرم</string>
+    <string name="invoice_karat_label">عیار %1$s</string>
+    <string name="unit_toman">تومان</string>
+    <string name="unit_gram">گرم</string>
+    <string name="unit_count">عدد</string>
+
+    <!-- Settings -->
+    <string name="settings_title">تنظیمات</string>
+    <string name="settings_shop_info">اطلاعات فروشگاه</string>
+    <string name="settings_shop_name">نام فروشگاه</string>
+    <string name="settings_shop_phone">تلفن فروشگاه</string>
+    <string name="settings_shop_address">آدرس فروشگاه</string>
+    <string name="settings_shop_license">شماره پروانه کسب</string>
+    <string name="settings_pricing_defaults">مقادیر پیش‌فرض قیمت‌گذاری</string>
+    <string name="settings_default_gold_price">قیمت پیش‌فرض هر گرم طلای ۱۸ عیار</string>
+    <string name="settings_default_labor_fee">درصد پیش‌فرض اجرت</string>
+    <string name="settings_default_profit">درصد پیش‌فرض سود</string>
+    <string name="settings_default_tax">درصد پیش‌فرض مالیات ارزش‌افزوده</string>
+    <string name="settings_saved">تنظیمات ذخیره شد</string>
+    <string name="settings_about">درباره برنامه</string>
+    <string name="settings_version">نسخه %1$s</string>
+
+    <!-- Validation -->
+    <string name="error_required_field">این فیلد الزامی است</string>
+    <string name="error_invalid_number">عدد نامعتبر است</string>
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Stylized gemstone / jewel mark, centered within the 66dp safe zone -->
+    <path
+        android:pathData="M39,38 L69,38 L78,50 L54,80 L30,50 Z"
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95" />
+    <path
+        android:pathData="M39,38 L45,50 L30,50 Z"
+        android:fillColor="#F3E3AE" />
+    <path
+        android:pathData="M69,38 L63,50 L78,50 Z"
+        android:fillColor="#F3E3AE" />
+    <path
+        android:pathData="M45,50 L54,80 L30,50 Z"
+        android:fillColor="#E7C766" />
+    <path
+        android:pathData="M63,50 L54,80 L78,50 Z"
+        android:fillColor="#DCB94F" />
+    <path
+        android:pathData="M45,50 L63,50 L54,80 Z"
+        android:fillColor="#FFF6DE" />
+    <path
+        android:pathData="M39,38 L69,38 L63,50 L45,50 Z"
+        android:fillColor="#FFFFFF" />
+</vector>
