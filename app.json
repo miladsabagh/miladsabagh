@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "گالری میلاد صباغ",
+    "slug": "miladsabagh-gold-shop",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "scheme": "miladsabagh",
+    "platforms": [
+      "android"
+    ],
+    "android": {
+      "package": "com.miladsabagh.goldshop",
+      "adaptiveIcon": {
+        "backgroundColor": "#111827"
+      }
+    },
+    "extra": {
+      "supportsRTL": true
+    }
+  }
+}
