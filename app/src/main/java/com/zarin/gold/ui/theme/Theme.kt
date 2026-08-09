@@ -1,6 +1,5 @@
 package com.zarin.gold.ui.theme
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
@@ -122,8 +121,6 @@ private val AppTypography = Typography(
 @Composable
 fun ZarinTheme(content: @Composable () -> Unit) {
     // برند جواهر همیشه در فضای شب طلایی می‌ماند
-    @Suppress("UNUSED_VARIABLE")
-    val ignoreSystemTheme = isSystemInDarkTheme()
     MaterialTheme(
         colorScheme = ColorScheme,
         typography = AppTypography,
