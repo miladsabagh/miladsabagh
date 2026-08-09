@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">زرین‌فاکتور</string>
+    <string name="app_tagline">مدیریت فروش طلا و جواهر</string>
+
+    <!-- ناوبری -->
+    <string name="nav_dashboard">داشبورد</string>
+    <string name="nav_products">کالاها</string>
+    <string name="nav_invoices">فاکتورها</string>
+    <string name="nav_customers">مشتریان</string>
+    <string name="nav_settings">تنظیمات</string>
+
+    <!-- عمومی -->
+    <string name="save">ذخیره</string>
+    <string name="cancel">انصراف</string>
+    <string name="delete">حذف</string>
+    <string name="edit">ویرایش</string>
+    <string name="back">بازگشت</string>
+    <string name="confirm">تأیید</string>
+    <string name="add">افزودن</string>
+    <string name="close">بستن</string>
+    <string name="search">جستجو</string>
+    <string name="note">توضیحات</string>
+    <string name="optional">اختیاری</string>
+    <string name="more">بیشتر</string>
+    <string name="rial">ریال</string>
+    <string name="toman">تومان</string>
+    <string name="gram">گرم</string>
+    <string name="count_unit">عدد</string>
+
+    <!-- داشبورد -->
+    <string name="gold_rate_title">نرخ هر گرم طلای ۱۸ عیار</string>
+    <string name="gold_rate_short">نرخ روز طلا</string>
+    <string name="gold_rate_edit">ویرایش نرخ روز</string>
+    <string name="gold_rate_hint">نرخ هر گرم طلای ۱۸ عیار را وارد کنید</string>
+    <string name="today_sales">فروش امروز</string>
+    <string name="month_sales">فروش این ماه</string>
+    <string name="today_invoices">فاکتور امروز</string>
+    <string name="unpaid_total">مانده طلب</string>
+    <string name="recent_invoices">آخرین فاکتورها</string>
+    <string name="no_invoices">هنوز فاکتوری ثبت نشده است</string>
+    <string name="quick_actions">دسترسی سریع</string>
+    <string name="new_invoice">فاکتور جدید</string>
+    <string name="see_all">مشاهده همه</string>
+
+    <!-- کالاها -->
+    <string name="products_title">کالاها</string>
+    <string name="search_products">جستجوی نام یا کد کالا…</string>
+    <string name="add_product">افزودن کالا</string>
+    <string name="edit_product">ویرایش کالا</string>
+    <string name="product_name">نام کالا</string>
+    <string name="product_code">کد کالا</string>
+    <string name="category">دسته‌بندی</string>
+    <string name="karat">عیار</string>
+    <string name="weight_gram">وزن (گرم)</string>
+    <string name="wage_percent">اجرت ساخت (٪)</string>
+    <string name="stone_price">قیمت نگین/سنگ</string>
+    <string name="fixed_price">قیمت مقطوع</string>
+    <string name="pricing_mode">نوع قیمت‌گذاری</string>
+    <string name="pricing_by_weight">بر اساس وزن</string>
+    <string name="pricing_fixed">قیمت مقطوع</string>
+    <string name="stock_qty">موجودی</string>
+    <string name="apply_vat">مشمول مالیات بر ارزش افزوده</string>
+    <string name="empty_products">هنوز کالایی ثبت نشده است</string>
+    <string name="product_deleted">کالا حذف شد</string>
+    <string name="delete_product_confirm">این کالا حذف شود؟</string>
+    <string name="in_stock">موجودی: %1$s</string>
+    <string name="out_of_stock">ناموجود</string>
+
+    <!-- دسته‌بندی کالا -->
+    <string name="category_gold">طلا</string>
+    <string name="category_jewelry">جواهر</string>
+    <string name="category_coin">سکه</string>
+    <string name="category_silver">نقره</string>
+    <string name="category_other">متفرقه</string>
+
+    <!-- مشتریان -->
+    <string name="customers_title">مشتریان</string>
+    <string name="search_customers">جستجوی نام یا شماره تماس…</string>
+    <string name="add_customer">افزودن مشتری</string>
+    <string name="edit_customer">ویرایش مشتری</string>
+    <string name="customer_name">نام و نام خانوادگی</string>
+    <string name="phone">شماره تماس</string>
+    <string name="national_code">کد ملی</string>
+    <string name="address">نشانی</string>
+    <string name="empty_customers">هنوز مشتری ثبت نشده است</string>
+    <string name="delete_customer_confirm">این مشتری حذف شود؟</string>
+    <string name="walk_in_customer">مشتری متفرقه</string>
+    <string name="select_customer">انتخاب مشتری</string>
+
+    <!-- فاکتور جدید -->
+    <string name="new_sale_title">فاکتور فروش جدید</string>
+    <string name="customer">مشتری</string>
+    <string name="items">اقلام فاکتور</string>
+    <string name="add_item">افزودن قلم</string>
+    <string name="edit_item">ویرایش قلم</string>
+    <string name="from_inventory">انتخاب از کالاها</string>
+    <string name="custom_item">قلم دستی</string>
+    <string name="quantity">تعداد</string>
+    <string name="line_total">مبلغ کل</string>
+    <string name="discount">تخفیف</string>
+    <string name="invoice_discount">تخفیف فاکتور</string>
+    <string name="paid_amount">مبلغ پرداخت‌شده</string>
+    <string name="payment_method">روش پرداخت</string>
+    <string name="payment_cash">نقدی</string>
+    <string name="payment_card">کارت‌خوان</string>
+    <string name="payment_transfer">کارت به کارت</string>
+    <string name="payment_credit">نسیه</string>
+    <string name="submit_invoice">ثبت و صدور فاکتور</string>
+    <string name="no_items">هنوز قلمی به فاکتور اضافه نشده است</string>
+    <string name="item_added">قلم به فاکتور اضافه شد</string>
+    <string name="set_gold_rate_first">ابتدا نرخ روز طلا را در تنظیمات وارد کنید</string>
+    <string name="add_at_least_one_item">حداقل یک قلم کالا اضافه کنید</string>
+    <string name="mark_fully_paid">تسویه کامل</string>
+
+    <!-- محاسبات -->
+    <string name="gold_value">ارزش طلا</string>
+    <string name="wage">اجرت ساخت</string>
+    <string name="profit">سود فروشنده</string>
+    <string name="vat">مالیات بر ارزش افزوده</string>
+    <string name="stone">نگین و سنگ</string>
+    <string name="subtotal">جمع کل</string>
+    <string name="payable">مبلغ قابل پرداخت</string>
+    <string name="remaining">مانده</string>
+    <string name="unit_price">قیمت واحد</string>
+
+    <!-- فاکتورها -->
+    <string name="invoices_title">فاکتورها</string>
+    <string name="search_invoices">جستجوی شماره فاکتور یا نام مشتری…</string>
+    <string name="invoice_number">شماره فاکتور</string>
+    <string name="invoice_date">تاریخ</string>
+    <string name="invoice_detail">فاکتور فروش</string>
+    <string name="share_pdf">اشتراک‌گذاری</string>
+    <string name="print">چاپ</string>
+    <string name="status_paid">تسویه شده</string>
+    <string name="status_unpaid">پرداخت‌نشده</string>
+    <string name="status_partial">پرداخت جزئی</string>
+    <string name="delete_invoice_confirm">این فاکتور حذف شود؟</string>
+    <string name="amount_in_words">مبلغ به حروف: %1$s</string>
+    <string name="row">ردیف</string>
+    <string name="description">شرح کالا</string>
+    <string name="empty_invoices">هنوز فاکتوری صادر نشده است</string>
+    <string name="invoice_saved">فاکتور با موفقیت صادر شد</string>
+    <string name="pdf_error">ساخت فایل PDF ناموفق بود</string>
+    <string name="share_invoice_via">ارسال فاکتور با</string>
+    <string name="filter_all">همه</string>
+
+    <!-- تنظیمات -->
+    <string name="settings_title">تنظیمات</string>
+    <string name="shop_info">اطلاعات فروشگاه</string>
+    <string name="shop_name">نام فروشگاه</string>
+    <string name="shop_phone">تلفن فروشگاه</string>
+    <string name="shop_address">نشانی فروشگاه</string>
+    <string name="pricing_settings">تنظیمات قیمت‌گذاری</string>
+    <string name="profit_percent">سود فروشنده (٪)</string>
+    <string name="vat_percent">مالیات بر ارزش افزوده (٪)</string>
+    <string name="currency_unit">واحد نمایش مبالغ</string>
+    <string name="invoice_prefix">پیش‌شماره فاکتور</string>
+    <string name="persian_digits">نمایش اعداد با ارقام فارسی</string>
+    <string name="settings_saved">تنظیمات ذخیره شد</string>
+    <string name="about">درباره برنامه</string>
+    <string name="formula_help">فرمول محاسبه: (وزن × نرخ روز) + اجرت + سود + مالیات + نگین</string>
+</resources>

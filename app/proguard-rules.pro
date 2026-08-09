@@ -1,0 +1,2 @@
+-keepattributes *Annotation*, InnerClasses, Signature, EnclosingMethod
+-dontwarn org.jetbrains.annotations.**
