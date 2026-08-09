@@ -65,7 +65,7 @@ fun InvoiceDetailScreen(
             TopAppBar(
                 title = {
                     Text(
-                        data?.let { "فاکتور ${PersianFormat.formatNumber(it.invoice.number)}" }
+                        data?.let { "فاکتور ${PersianFormat.toPersianDigits(it.invoice.number.toString())}" }
                             ?: "فاکتور"
                     )
                 },

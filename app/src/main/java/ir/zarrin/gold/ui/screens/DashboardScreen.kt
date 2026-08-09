@@ -169,7 +169,7 @@ fun DashboardScreen(
                 ) {
                     Column(Modifier.padding(horizontal = 16.dp, vertical = 10.dp)) {
                         KeyValueRow(
-                            label = "فاکتور ${PersianFormat.formatNumber(inv.invoice.number)} — ${inv.invoice.customerName}",
+                            label = "فاکتور ${PersianFormat.toPersianDigits(inv.invoice.number.toString())} — ${inv.invoice.customerName}",
                             value = PersianFormat.formatCurrency(inv.invoice.total),
                         )
                         Text(

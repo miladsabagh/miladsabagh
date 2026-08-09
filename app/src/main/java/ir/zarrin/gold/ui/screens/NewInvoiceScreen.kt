@@ -370,19 +370,27 @@ private fun QuantityDialog(
     onDismiss: () -> Unit,
     onConfirm: (Int) -> Unit,
 ) {
-    var qtyText by remember { mutableStateOf("1") }
-    val qty = PersianFormat.parseLong(qtyText)?.toInt()
+    var qty by remember { mutableStateOf(1) }
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text(product.name) },
         text = {
-            AppTextField(value = qtyText, onValueChange = { qtyText = it }, label = "تعداد", numeric = true)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                FilledTonalButton(onClick = { if (qty > 1) qty-- }) { Text("−") }
+                Text(
+                    "تعداد: ${PersianFormat.formatNumber(qty.toLong())}",
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.padding(horizontal = 16.dp),
+                )
+                FilledTonalButton(onClick = { qty++ }) { Text("+") }
+            }
         },
         confirmButton = {
-            TextButton(
-                enabled = qty != null && qty >= 1,
-                onClick = { onConfirm(qty ?: 1) },
-            ) { Text("افزودن") }
+            TextButton(onClick = { onConfirm(qty) }) { Text("افزودن") }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text("انصراف") } },
     )

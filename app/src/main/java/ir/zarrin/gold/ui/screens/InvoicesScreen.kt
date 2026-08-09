@@ -102,7 +102,7 @@ fun InvoicesScreen(
                             ) {
                                 Column(Modifier.weight(1f)) {
                                     Text(
-                                        "فاکتور ${PersianFormat.formatNumber(inv.invoice.number)} — ${inv.invoice.customerName}",
+                                        "فاکتور ${PersianFormat.toPersianDigits(inv.invoice.number.toString())} — ${inv.invoice.customerName}",
                                         style = MaterialTheme.typography.titleSmall,
                                         fontWeight = FontWeight.Bold,
                                     )

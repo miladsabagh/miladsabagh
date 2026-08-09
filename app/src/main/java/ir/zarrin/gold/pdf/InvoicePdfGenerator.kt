@@ -21,13 +21,34 @@ import java.io.File
  */
 object InvoicePdfGenerator {
 
-    private const val PAGE_WIDTH = 595
-    private const val PAGE_HEIGHT = 842
+    const val PAGE_WIDTH = 595
+    const val PAGE_HEIGHT = 842
     private const val MARGIN = 36f
     private val RIGHT = PAGE_WIDTH - MARGIN
     private const val LEFT = MARGIN
 
     fun generate(context: Context, data: InvoiceWithItems, settings: StoreSettings): File {
+        val doc = PdfDocument()
+        val page = doc.startPage(
+            PdfDocument.PageInfo.Builder(PAGE_WIDTH, PAGE_HEIGHT, 1).create()
+        )
+        drawInvoice(context, page.canvas, data, settings)
+        doc.finishPage(page)
+
+        val dir = File(context.cacheDir, "invoices").apply { mkdirs() }
+        val file = File(dir, "invoice_${data.invoice.number}.pdf")
+        file.outputStream().use { doc.writeTo(it) }
+        doc.close()
+        return file
+    }
+
+    /** ترسیم کامل فاکتور روی هر Canvas (صفحه PDF یا Bitmap). */
+    fun drawInvoice(
+        context: Context,
+        c: Canvas,
+        data: InvoiceWithItems,
+        settings: StoreSettings,
+    ) {
         val vazir = ResourcesCompat.getFont(context, R.font.vazirmatn_regular)
             ?: Typeface.DEFAULT
         val vazirBold = ResourcesCompat.getFont(context, R.font.vazirmatn_bold)
@@ -55,11 +76,6 @@ object InvoicePdfGenerator {
         val thinLine = Paint().apply { color = Color.LTGRAY; strokeWidth = 0.6f }
         val headerBg = Paint().apply { color = Color.rgb(246, 232, 184) }
 
-        val doc = PdfDocument()
-        val page = doc.startPage(
-            PdfDocument.PageInfo.Builder(PAGE_WIDTH, PAGE_HEIGHT, 1).create()
-        )
-        val c = page.canvas
         var y = MARGIN + 12f
 
         // سربرگ
@@ -79,7 +95,7 @@ object InvoicePdfGenerator {
 
         // مشخصات فاکتور
         val inv = data.invoice
-        c.drawText("فاکتور فروش شماره ${PersianFormat.formatNumber(inv.number)}", RIGHT, y, bold)
+        c.drawText("فاکتور فروش شماره ${PersianFormat.toPersianDigits(inv.number.toString())}", RIGHT, y, bold)
         drawLeft(c, "تاریخ: ${JalaliDate.format(inv.date)}", LEFT, y, normal)
         y += 16f
         c.drawText("خریدار: ${inv.customerName}", RIGHT, y, normal)
@@ -163,14 +179,6 @@ object InvoicePdfGenerator {
             "این فاکتور توسط اپلیکیشن زرین صادر شده است.",
             PAGE_WIDTH / 2f, PAGE_HEIGHT - 24f, footer
         )
-
-        doc.finishPage(page)
-
-        val dir = File(context.cacheDir, "invoices").apply { mkdirs() }
-        val file = File(dir, "invoice_${inv.number}.pdf")
-        file.outputStream().use { doc.writeTo(it) }
-        doc.close()
-        return file
     }
 
     fun share(context: Context, file: File) {
