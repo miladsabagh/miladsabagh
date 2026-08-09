@@ -16,6 +16,7 @@ import com.zarnegar.gold.domain.model.InvoiceLine
 import com.zarnegar.gold.domain.model.ShopSettings
 import java.io.File
 import java.io.OutputStream
+import kotlin.math.abs
 
 /**
  * تولید فاکتور PDF در قطع A4 با چیدمان راست‌چین.
@@ -100,6 +101,25 @@ class InvoicePdfGenerator(private val context: Context) {
         document.close()
     }
 
+    /**
+     * صفحهٔ اول فاکتور را روی یک بوم دلخواه (به اندازهٔ ۵۹۵×۸۴۲) رسم می‌کند؛
+     * برای پیش‌نمایش و آزمون‌های تصویری.
+     */
+    fun renderFirstPage(canvas: Canvas, invoice: Invoice, settings: ShopSettings) {
+        canvas.drawColor(Color.WHITE)
+        val pages = paginate(invoice.lines)
+        drawPage(
+            canvas = canvas,
+            invoice = invoice,
+            settings = settings,
+            lines = pages.first(),
+            startIndex = 0,
+            pageNumber = 1,
+            pageCount = pages.size,
+            isLastPage = pages.size == 1,
+        )
+    }
+
     private fun paginate(lines: List<InvoiceLine>): List<List<InvoiceLine>> {
         if (lines.isEmpty()) return listOf(emptyList())
         val firstPage = 12
@@ -157,7 +177,7 @@ class InvoicePdfGenerator(private val context: Context) {
         y += 16f
         val subtitle = buildList {
             if (settings.ownerName.isNotBlank()) add(settings.ownerName)
-            if (settings.phone.isNotBlank()) add("تلفن: ${PersianText.toPersianDigits(settings.phone)}")
+            if (settings.phone.isNotBlank()) add("تلفن: ${PersianText.formatCode(settings.phone)}")
         }.joinToString(" • ")
         if (subtitle.isNotBlank()) {
             canvas.drawText(subtitle, right, y, paint(9f, regular, MUTED))
@@ -169,7 +189,7 @@ class InvoicePdfGenerator(private val context: Context) {
         }
         if (settings.economicCode.isNotBlank()) {
             canvas.drawText(
-                "کد اقتصادی: ${PersianText.toPersianDigits(settings.economicCode)}",
+                "کد اقتصادی: ${PersianText.formatCode(settings.economicCode)}",
                 right,
                 y,
                 paint(9f, regular, MUTED),
@@ -194,7 +214,7 @@ class InvoicePdfGenerator(private val context: Context) {
         val boxRight = box.right - 12f
         canvas.drawText("فاکتور فروش کالا و خدمات", boxRight, box.top + 22f, paint(11f, bold, GOLD))
         canvas.drawText(
-            "شمارهٔ فاکتور: ${PersianText.toPersianDigits(invoice.number)}",
+            "شمارهٔ فاکتور: ${PersianText.formatCode(invoice.number)}",
             boxRight,
             box.top + 40f,
             paint(9f, regular, INK),
@@ -240,7 +260,7 @@ class InvoicePdfGenerator(private val context: Context) {
         )
         if (invoice.customerPhone.isNotBlank()) {
             canvas.drawText(
-                "تلفن: ${PersianText.toPersianDigits(invoice.customerPhone)}",
+                "تلفن: ${PersianText.formatCode(invoice.customerPhone)}",
                 right - 200f,
                 row1,
                 paint(9f, regular, INK),
@@ -248,7 +268,7 @@ class InvoicePdfGenerator(private val context: Context) {
         }
         if (invoice.customerNationalCode.isNotBlank()) {
             canvas.drawText(
-                "کد ملی: ${PersianText.toPersianDigits(invoice.customerNationalCode)}",
+                "کد ملی: ${PersianText.formatCode(invoice.customerNationalCode)}",
                 right - 340f,
                 row1,
                 paint(9f, regular, INK),
@@ -372,8 +392,15 @@ class InvoicePdfGenerator(private val context: Context) {
             add("جمع کل پیش از مالیات" to invoice.grossBeforeTax)
             val discount = invoice.itemDiscountTotal + invoice.invoiceDiscount
             if (discount > 0) add("تخفیف" to -discount)
-            add("مالیات بر ارزش افزوده (${PersianText.formatPercent(invoice.vatPercentSnapshot)})" to invoice.vatTotal)
-            if (invoice.roundingAdjustment != 0L) add("گرد کردن" to invoice.roundingAdjustment)
+            add(
+                "مالیات بر ارزش افزوده " +
+                    "(${PersianText.formatPercent(invoice.vatPercentSnapshot)})" to invoice.vatTotal,
+            )
+            if (invoice.roundingAdjustment != 0L) {
+                val label =
+                    if (invoice.roundingAdjustment > 0) "گرد کردن (اضافه)" else "گرد کردن (کسر)"
+                add(label to abs(invoice.roundingAdjustment))
+            }
         }
 
         var y = top
@@ -445,7 +472,8 @@ class InvoicePdfGenerator(private val context: Context) {
         var y = maxOf(top, PAGE_HEIGHT - 120f)
         if (settings.cardNumber.isNotBlank()) {
             canvas.drawText(
-                "شمارهٔ کارت: ${PersianText.toPersianDigits(settings.cardNumber)}",
+                "شمارهٔ کارت: " +
+                    PersianText.formatCode(settings.cardNumber),
                 right,
                 y,
                 paint(9f, regular, INK),

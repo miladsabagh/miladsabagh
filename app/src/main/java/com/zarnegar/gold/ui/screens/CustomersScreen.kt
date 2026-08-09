@@ -93,7 +93,7 @@ fun CustomersScreen(viewModel: CustomersViewModel) {
                 )
             } else {
                 LazyColumn(
-                    contentPadding = PaddingValues(16.dp),
+                    contentPadding = PaddingValues(start = 16.dp, top = 16.dp, end = 16.dp, bottom = 96.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
                     items(customers, key = { it.id }) { customer ->
@@ -121,7 +121,7 @@ fun CustomersScreen(viewModel: CustomersViewModel) {
                                     )
                                     if (customer.phone.isNotBlank()) {
                                         Text(
-                                            text = PersianText.toPersianDigits(customer.phone),
+                                            text = PersianText.formatCode(customer.phone),
                                             style = MaterialTheme.typography.labelSmall,
                                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                                         )

@@ -10,6 +10,21 @@ object PersianText {
 
     private const val PERSIAN_ZERO = '\u06F0'
     private const val THOUSANDS_SEPARATOR = '\u066C' // ARABIC THOUSANDS SEPARATOR (٬)
+    private const val LTR_ISOLATE = '\u2066'
+    private const val POP_ISOLATE = '\u2069'
+
+    /**
+     * متن را در یک «جزیرهٔ چپ‌به‌راست» می‌گذارد تا در متن راست‌چین جابه‌جا نشود؛
+     * برای مواردی مثل شمارهٔ کارت یا علامت منفی که الگوریتم دوسویه آن‌ها را جابه‌جا می‌کند.
+     */
+    fun isolateLtr(value: String): String =
+        if (value.isEmpty()) value else "$LTR_ISOLATE$value$POP_ISOLATE"
+
+    /**
+     * شناسه‌های عددی (شمارهٔ فاکتور، کد کالا، تلفن، کد ملی و …) را با ارقام فارسی و
+     * ترتیب صحیح نمایش می‌دهد؛ بدون این کار، الگوریتم دوسویه بخش‌های عدد را جابه‌جا می‌کند.
+     */
+    fun formatCode(value: String): String = isolateLtr(toPersianDigits(value))
 
     fun toPersianDigits(value: String): String = buildString(value.length) {
         for (ch in value) {
@@ -40,9 +55,11 @@ object PersianText {
         return sb.toString()
     }
 
-    /** `1234567` → `۱٬۲۳۴٬۵۶۷` */
-    fun formatNumber(value: Long, persianDigits: Boolean = true): String =
-        if (persianDigits) toPersianDigits(groupDigits(value)) else groupDigits(value)
+    /** `1234567` → `۱٬۲۳۴٬۵۶۷`؛ اعداد منفی جدا می‌شوند تا علامت منفی سمت چپ بماند. */
+    fun formatNumber(value: Long, persianDigits: Boolean = true): String {
+        val text = if (persianDigits) toPersianDigits(groupDigits(value)) else groupDigits(value)
+        return if (value < 0) isolateLtr(text) else text
+    }
 
     /** Formats a weight in grams with up to three decimals: `4.5` → `۴٫۵۰۰ گرم`. */
     fun formatGrams(grams: Double, withUnit: Boolean = true, persianDigits: Boolean = true): String {

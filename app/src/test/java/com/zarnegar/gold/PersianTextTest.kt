@@ -19,7 +19,14 @@ class PersianTextTest {
         assertEquals("۱٬۲۳۴٬۵۶۷", PersianText.formatNumber(1_234_567))
         assertEquals("۹۹۹", PersianText.formatNumber(999))
         assertEquals("۰", PersianText.formatNumber(0))
-        assertEquals("-۱٬۰۰۰", PersianText.formatNumber(-1000))
+    }
+
+    @Test
+    fun `negative amounts keep the minus sign on the left`() {
+        // در متن راست‌چین، عدد منفی داخل «جزیرهٔ چپ‌به‌راست» قرار می‌گیرد.
+        assertEquals("\u2066-۱٬۰۰۰\u2069", PersianText.formatNumber(-1000))
+        assertEquals("\u2066x\u2069", PersianText.isolateLtr("x"))
+        assertEquals("", PersianText.isolateLtr(""))
     }
 
     @Test

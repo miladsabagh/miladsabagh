@@ -138,7 +138,7 @@ fun InvoicesScreen(
                 )
             } else {
                 LazyColumn(
-                    contentPadding = PaddingValues(16.dp),
+                    contentPadding = PaddingValues(start = 16.dp, top = 16.dp, end = 16.dp, bottom = 96.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
                     items(invoices, key = { it.id }) { invoice ->
@@ -179,7 +179,7 @@ private fun InvoiceListCard(invoice: Invoice, currency: String, onClick: () -> U
                         fontWeight = FontWeight.SemiBold,
                     )
                     Text(
-                        text = "شماره ${PersianText.toPersianDigits(invoice.number)}",
+                        text = "شماره ${PersianText.formatCode(invoice.number)}",
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )

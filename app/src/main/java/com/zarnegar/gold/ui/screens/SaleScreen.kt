@@ -69,6 +69,7 @@ import com.zarnegar.gold.ui.components.KeyValueRow
 import com.zarnegar.gold.ui.components.SectionCard
 import com.zarnegar.gold.ui.components.TextInputField
 import com.zarnegar.gold.ui.vm.SaleViewModel
+import kotlin.math.abs
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -314,7 +315,7 @@ private fun CustomerCard(customer: Customer?, onPick: () -> Unit, onClear: () ->
                     )
                     Text(
                         text = customer?.phone?.takeIf { it.isNotBlank() }
-                            ?.let { PersianText.toPersianDigits(it) }
+                            ?.let { PersianText.formatCode(it) }
                             ?: "برای انتخاب مشتری ضربه بزنید",
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -490,7 +491,10 @@ private fun TotalsCard(
             "${PersianText.formatNumber(vat)} $currency",
         )
         if (rounding != 0L) {
-            KeyValueRow("گرد کردن", "${PersianText.formatNumber(rounding)} $currency")
+            KeyValueRow(
+                if (rounding > 0) "گرد کردن (اضافه)" else "گرد کردن (کسر)",
+                "${PersianText.formatNumber(abs(rounding))} $currency",
+            )
         }
         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
         KeyValueRow(
@@ -656,7 +660,7 @@ private fun CustomerPickerSheet(
                             Text(customer.fullName, style = MaterialTheme.typography.bodyLarge)
                             if (customer.phone.isNotBlank()) {
                                 Text(
-                                    text = PersianText.toPersianDigits(customer.phone),
+                                    text = PersianText.formatCode(customer.phone),
                                     style = MaterialTheme.typography.labelSmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                                 )

@@ -335,7 +335,7 @@ private fun InvoiceRow(
             Column {
                 Text(invoice.customerName, style = MaterialTheme.typography.bodyLarge)
                 Text(
-                    text = "فاکتور ${PersianText.toPersianDigits(invoice.number)} • " +
+                    text = "فاکتور ${PersianText.formatCode(invoice.number)} • " +
                         JalaliDate.fromEpochMillis(invoice.createdAt).formatNumeric(),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,

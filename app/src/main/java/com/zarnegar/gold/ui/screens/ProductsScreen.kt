@@ -164,7 +164,7 @@ fun ProductsScreen(
                 )
             } else {
                 LazyColumn(
-                    contentPadding = PaddingValues(16.dp),
+                    contentPadding = PaddingValues(start = 16.dp, top = 16.dp, end = 16.dp, bottom = 96.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
                     items(products, key = { it.id }) { product ->
@@ -237,7 +237,7 @@ private fun ProductCard(
                         fontWeight = FontWeight.SemiBold,
                     )
                     Text(
-                        text = "کد ${PersianText.toPersianDigits(product.code)} • " +
+                        text = "کد ${PersianText.formatCode(product.code)} • " +
                             product.category.label,
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,

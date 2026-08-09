@@ -131,6 +131,7 @@ fun DecimalField(
         label = { Text(label) },
         singleLine = true,
         enabled = enabled,
+        visualTransformation = PersianDigitsTransformation,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
         suffix = suffix?.let { { Text(it) } },
         modifier = modifier,

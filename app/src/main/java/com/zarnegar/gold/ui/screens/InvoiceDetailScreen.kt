@@ -55,6 +55,7 @@ import com.zarnegar.gold.ui.components.SectionCard
 import com.zarnegar.gold.ui.components.StatusChip
 import com.zarnegar.gold.ui.vm.InvoicesViewModel
 import com.zarnegar.gold.ui.vm.SettingsViewModel
+import kotlin.math.abs
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -86,7 +87,7 @@ fun InvoiceDetailScreen(
         snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
             TopAppBar(
-                title = { Text("فاکتور ${PersianText.toPersianDigits(current.number)}") },
+                title = { Text("فاکتور ${PersianText.formatCode(current.number)}") },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(
@@ -180,7 +181,7 @@ fun InvoiceDetailScreen(
                         )
                     }
                     HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
-                    KeyValueRow("شمارهٔ فاکتور", PersianText.toPersianDigits(current.number))
+                    KeyValueRow("شمارهٔ فاکتور", PersianText.formatCode(current.number))
                     KeyValueRow(
                         "تاریخ صدور",
                         JalaliDate.fromEpochMillis(current.createdAt).formatLong() +
@@ -190,7 +191,7 @@ fun InvoiceDetailScreen(
                     if (current.customerPhone.isNotBlank()) {
                         KeyValueRow(
                             "تلفن",
-                            PersianText.toPersianDigits(current.customerPhone),
+                            PersianText.formatCode(current.customerPhone),
                         )
                     }
                     KeyValueRow(
@@ -230,8 +231,13 @@ fun InvoiceDetailScreen(
                     )
                     if (current.roundingAdjustment != 0L) {
                         KeyValueRow(
-                            "گرد کردن",
-                            "${PersianText.formatNumber(current.roundingAdjustment)} $currency",
+                            if (current.roundingAdjustment > 0) {
+                                "گرد کردن (اضافه)"
+                            } else {
+                                "گرد کردن (کسر)"
+                            },
+                            "${PersianText.formatNumber(abs(current.roundingAdjustment))} " +
+                                currency,
                         )
                     }
                     HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
