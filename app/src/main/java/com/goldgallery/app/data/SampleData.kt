@@ -1,0 +1,130 @@
+package com.goldgallery.app.data
+
+import com.goldgallery.app.data.db.ProductEntity
+import com.goldgallery.app.data.model.Category
+
+object SampleData {
+
+    val products: List<ProductEntity> = listOf(
+        ProductEntity(
+            name = "انگشتر طلا مدل سولیت",
+            category = Category.RING.name,
+            weightGrams = 3.8,
+            karat = 18,
+            wagePerGram = 480_000,
+            stock = 5,
+        ),
+        ProductEntity(
+            name = "انگشتر مینیمال طلا",
+            category = Category.RING.name,
+            weightGrams = 2.4,
+            karat = 18,
+            wagePerGram = 380_000,
+            stock = 8,
+        ),
+        ProductEntity(
+            name = "حلقه ست طلای ۱۸ عیار",
+            category = Category.RING.name,
+            weightGrams = 4.6,
+            karat = 18,
+            wagePerGram = 420_000,
+            stock = 6,
+        ),
+        ProductEntity(
+            name = "گردنبند زنجیر ونیزی",
+            category = Category.NECKLACE.name,
+            weightGrams = 6.2,
+            karat = 18,
+            wagePerGram = 520_000,
+            stock = 3,
+        ),
+        ProductEntity(
+            name = "گردنبند مروارید و طلا",
+            category = Category.NECKLACE.name,
+            weightGrams = 5.1,
+            karat = 18,
+            wagePerGram = 610_000,
+            stock = 2,
+        ),
+        ProductEntity(
+            name = "پلاک طلا مدل گل رز",
+            category = Category.NECKLACE.name,
+            weightGrams = 3.3,
+            karat = 21,
+            wagePerGram = 580_000,
+            stock = 4,
+        ),
+        ProductEntity(
+            name = "دستبند طلا مدل بافت",
+            category = Category.BRACELET.name,
+            weightGrams = 7.4,
+            karat = 18,
+            wagePerGram = 450_000,
+            stock = 4,
+        ),
+        ProductEntity(
+            name = "النگوی طلای ۲۱ عیار",
+            category = Category.BRACELET.name,
+            weightGrams = 8.9,
+            karat = 21,
+            wagePerGram = 390_000,
+            stock = 5,
+        ),
+        ProductEntity(
+            name = "گوشواره طلا مدل چکشی",
+            category = Category.EARRING.name,
+            weightGrams = 2.1,
+            karat = 18,
+            wagePerGram = 540_000,
+            stock = 7,
+        ),
+        ProductEntity(
+            name = "گوشواره آویز مروارید",
+            category = Category.EARRING.name,
+            weightGrams = 3.0,
+            karat = 18,
+            wagePerGram = 620_000,
+            stock = 3,
+        ),
+        ProductEntity(
+            name = "سرویس طلا مدل لیلیوم",
+            category = Category.SET.name,
+            weightGrams = 24.5,
+            karat = 18,
+            wagePerGram = 560_000,
+            stock = 1,
+        ),
+        ProductEntity(
+            name = "نیم ست طلا مدل خورشید",
+            category = Category.SET.name,
+            weightGrams = 12.8,
+            karat = 18,
+            wagePerGram = 530_000,
+            stock = 2,
+        ),
+        ProductEntity(
+            name = "سکه بهار آزادی طرح جدید",
+            category = Category.COIN.name,
+            weightGrams = 8.133,
+            karat = 22,
+            wagePerGram = 120_000,
+            stock = 10,
+        ),
+        ProductEntity(
+            name = "نیم سکه بهار آزادی",
+            category = Category.COIN.name,
+            weightGrams = 4.066,
+            karat = 22,
+            wagePerGram = 110_000,
+            stock = 6,
+        ),
+        ProductEntity(
+            name = "ربع سکه بهار آزادی",
+            category = Category.COIN.name,
+            weightGrams = 2.033,
+            karat = 22,
+            wagePerGram = 100_000,
+            stock = 9,
+        ),
+    )
+}
