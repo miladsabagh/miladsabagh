@@ -26,8 +26,8 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.People
 import androidx.compose.material.icons.filled.Payments
 import androidx.compose.material.icons.filled.Scale
+import androidx.compose.material.icons.automirrored.filled.TrendingUp
 import androidx.compose.material.icons.filled.ShoppingBag
-import androidx.compose.material.icons.filled.TrendingUp
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -152,7 +152,7 @@ fun DashboardScreen(
                         title = "فروش امروز",
                         value = settings.money(state.todayTotal),
                         subtitle = "${state.todayCount.toPersianDigits()} فاکتور",
-                        icon = Icons.Default.TrendingUp,
+                        icon = Icons.AutoMirrored.Filled.TrendingUp,
                         accent = SuccessGreen,
                         modifier = Modifier.weight(1f)
                     )
