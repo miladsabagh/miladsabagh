@@ -81,9 +81,18 @@ class NewSaleViewModel(
     private val _savedInvoiceId = MutableStateFlow<Long?>(null)
     val savedInvoiceId: StateFlow<Long?> = _savedInvoiceId.asStateFlow()
 
+    /**
+     * تنظیمات همیشه فعال است تا ثبت فاکتور به فعال بودن مشترک [uiState] وابسته نباشد.
+     */
+    private val settings: StateFlow<AppSettings> = settingsRepository.settings.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.Eagerly,
+        initialValue = AppSettings(),
+    )
+
     val uiState: StateFlow<NewSaleUiState> = combine(
         draft,
-        settingsRepository.settings,
+        settings,
         productRepository.observeAll(),
         customerRepository.observeAll(),
         saving,
@@ -130,7 +139,7 @@ class NewSaleViewModel(
     }
 
     fun submit() {
-        val state = uiState.value
+        val state = NewSaleUiState(draft = draft.value, settings = settings.value)
         if (state.draft.lines.isEmpty()) {
             showMessage(R.string.add_at_least_one_item)
             return
