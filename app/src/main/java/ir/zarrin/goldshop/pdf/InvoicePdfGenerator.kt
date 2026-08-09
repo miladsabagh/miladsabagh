@@ -45,15 +45,15 @@ object InvoicePdfGenerator {
 
     /** ستون‌های جدول از راست به چپ */
     private val COLUMNS = listOf(
-        "ردیف" to 28f,
-        "شرح کالا" to 148f,
-        "عیار" to 34f,
-        "وزن (گرم)" to 52f,
-        "تعداد" to 34f,
-        "نرخ هر گرم" to 68f,
-        "اجرت و سود" to 68f,
-        "مالیات" to 48f,
-        "مبلغ کل" to 51f
+        "ردیف" to 26f,
+        "شرح کالا" to 137f,
+        "عیار" to 30f,
+        "وزن (گرم)" to 46f,
+        "تعداد" to 30f,
+        "نرخ هر گرم" to 66f,
+        "اجرت و سود" to 66f,
+        "مالیات" to 60f,
+        "مبلغ کل" to 70f
     )
 
     fun generate(context: Context, data: InvoiceWithItems, settings: AppSettings): File {
@@ -267,15 +267,16 @@ object InvoicePdfGenerator {
                 if (byWeight) item.karat.toPersianDigits() else "—",
                 if (byWeight) item.weightGrams.formatWeight() else "—",
                 item.quantity.toPersianDigits(),
-                if (byWeight) money(item.ratePerGram) else "مقطوع",
-                if (byWeight) money(item.wage + item.profit) else "—",
-                money(item.tax),
-                money(item.lineTotal)
+                if (byWeight) amount(item.ratePerGram) else "مقطوع",
+                if (byWeight) amount(item.wage + item.profit) else "—",
+                amount(item.tax),
+                amount(item.lineTotal)
             )
 
-            val nameWidth = COLUMNS[1].second - 6f
-            val nameHeight = measure(item.name, nameWidth, 8.5f)
-            val rowHeight = maxOf(22f, nameHeight + 10f)
+            val heights = values.mapIndexed { columnIndex, value ->
+                measure(value, COLUMNS[columnIndex].second - 6f, 8.5f)
+            }
+            val rowHeight = maxOf(22f, heights.max() + 10f)
 
             canvas.drawRect(MARGIN, y, MARGIN + CONTENT_WIDTH, y + rowHeight, strokePaint)
             var right = MARGIN + CONTENT_WIDTH
@@ -284,7 +285,7 @@ object InvoicePdfGenerator {
                 text(
                     values[columnIndex],
                     left + 3f,
-                    y + (rowHeight - if (columnIndex == 1) nameHeight else 11f) / 2f,
+                    y + (rowHeight - heights[columnIndex]) / 2f,
                     width - 6f,
                     size = 8.5f,
                     align = if (columnIndex == 1) Layout.Alignment.ALIGN_NORMAL else Layout.Alignment.ALIGN_CENTER
@@ -296,7 +297,16 @@ object InvoicePdfGenerator {
         }
 
         private fun drawTotals(data: InvoiceWithItems) {
-            y += 12f
+            y += 4f
+            text(
+                "مبالغ جدول به ${settings.currencyLabel} است.",
+                MARGIN + 4f,
+                y,
+                CONTENT_WIDTH - 8f,
+                size = 7.5f,
+                color = MUTED
+            )
+            y += 18f
             val invoice = data.invoice
             val boxWidth = 250f
             val left = MARGIN
@@ -378,8 +388,11 @@ object InvoicePdfGenerator {
             )
         }
 
-        private fun money(amount: Long): String =
-            "${settings.display(amount).groupDigits()} ${settings.currencyLabel}"
+        private fun money(value: Long): String =
+            "${settings.display(value).groupDigits()} ${settings.currencyLabel}"
+
+        /** مبلغ بدون واحد پول برای سلول‌های جدول */
+        private fun amount(value: Long): String = settings.display(value).groupDigits()
 
         private fun paintFor(size: Float, typeface: Typeface, color: Int): TextPaint =
             TextPaint(textPaint).apply {
