@@ -1,0 +1,47 @@
+{
+  "name": "gold-jewelry-invoice-app",
+  "version": "1.0.0",
+  "description": "Expo Android app for selling gold and jewelry with invoice issuing.",
+  "main": "expo/AppEntry",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/**/*.test.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miladsabagh/miladsabagh.git"
+  },
+  "keywords": [
+    "android",
+    "expo",
+    "gold",
+    "jewelry",
+    "invoice"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miladsabagh/miladsabagh/issues"
+  },
+  "homepage": "https://github.com/miladsabagh/miladsabagh#readme",
+  "dependencies": {
+    "expo": "^57.0.11",
+    "expo-clipboard": "^57.0.1",
+    "react": "^19.2.8",
+    "react-native": "^0.86.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "tsx": "^4.23.11",
+    "typescript": "^7.0.2"
+  },
+  "overrides": {
+    "image-size": "2.0.2",
+    "uuid": "14.0.1",
+    "postcss": "8.5.26",
+    "fast-xml-parser": "5.10.1"
+  }
+}
