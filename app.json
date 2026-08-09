@@ -34,10 +34,3 @@
     ]
   }
 }
-{
-  "plugins": [
-    "expo-status-bar",
-    "expo-sharing",
-    "expo-font"
-  ]
-}
