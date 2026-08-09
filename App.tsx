@@ -171,6 +171,9 @@ const ProductCard = ({
       </View>
       <View style={styles.productFooter}>
         <Pressable
+          testID={`add-${product.id}`}
+          accessibilityRole="button"
+          accessibilityLabel={`افزودن ${product.name} به سبد خرید`}
           hitSlop={5}
           style={styles.addButton}
           onPress={(event) => {
@@ -593,7 +596,13 @@ const CartScreen = ({
             </View>
           </View>
 
-          <Pressable style={styles.invoiceCta} onPress={onInvoice}>
+          <Pressable
+            testID="open-invoice"
+            accessibilityRole="button"
+            accessibilityLabel="مشاهده و صدور فاکتور"
+            style={styles.invoiceCta}
+            onPress={onInvoice}
+          >
             <Feather name="arrow-left" size={19} color={colors.wine} />
             <View style={styles.invoiceCtaTextWrap}>
               <Text style={styles.invoiceCtaTitle}>مشاهده و صدور فاکتور</Text>
@@ -759,6 +768,9 @@ const BottomNav = ({
         return (
           <Pressable
             key={tab.id}
+            testID={`nav-${tab.id}`}
+            accessibilityRole="button"
+            accessibilityLabel={tab.label}
             style={styles.navItem}
             onPress={() => onChange(tab.id)}
           >
@@ -928,7 +940,7 @@ const InvoiceModal = ({
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.invoiceScroll}
       >
-        <View style={styles.invoicePaper}>
+        <View testID="invoice-preview" style={styles.invoicePaper}>
           <View style={styles.invoiceBrandBlock}>
             <View>
               <Text style={styles.invoiceBrand}>آتلیه زرین</Text>
