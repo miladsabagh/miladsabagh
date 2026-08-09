@@ -89,23 +89,23 @@ class InvoicePdfGenerator(private val context: Context) {
 
         // ---------- Items table ----------
         // Column anchors, laid out right-to-left.
-        val colRow = right - 16f          // ردیف (center)
+        val colRow = right - 24f          // ردیف (center)
         val colName = right - 60f         // شرح (right-aligned, grows left)
-        val colKarat = left + 230f        // عیار (center)
-        val colWeight = left + 185f       // وزن (center)
-        val colQty = left + 135f          // تعداد (center)
-        val colTotal = left + 105f        // مبلغ (left-aligned block, right edge)
+        val colKarat = left + 292f        // عیار (center)
+        val colWeight = left + 237f       // وزن (center)
+        val colQty = left + 177f          // تعداد (center)
+        val colTotal = left + 85f         // مبلغ (center)
 
         fun drawTableHeader() {
             canvas.drawRoundRect(left, y, right, y + ROW_H, 6f, 6f, Paint().apply { color = GOLD })
             val hp = paint(10f, bold, Color.WHITE, Paint.Align.CENTER)
             val yText = y + ROW_H / 2 + 4f
-            canvas.drawText("ردیف", colRow - 8f, yText, hp)
+            canvas.drawText("ردیف", colRow, yText, hp)
             canvas.drawText("شرح کالا", colName - 60f, yText, hp)
             canvas.drawText("عیار", colKarat, yText, hp)
             canvas.drawText("وزن (گرم)", colWeight, yText, hp)
             canvas.drawText("تعداد", colQty, yText, hp)
-            canvas.drawText("مبلغ (تومان)", colTotal - 45f, yText, hp)
+            canvas.drawText("مبلغ (تومان)", colTotal, yText, hp)
             y += ROW_H + 4f
         }
 
@@ -130,13 +130,13 @@ class InvoicePdfGenerator(private val context: Context) {
                 canvas.drawRect(left, y - 4f, right, y + ROW_H - 4f, Paint().apply { color = 0xFFFBF5E6.toInt() })
             }
             val yText = y + ROW_H / 2
-            canvas.drawText((index + 1).toString().toPersianDigits(), colRow - 8f, yText, rowCenter)
-            val name = if (item.name.length > 28) item.name.take(27) + "…" else item.name
+            canvas.drawText((index + 1).toString().toPersianDigits(), colRow, yText, rowCenter)
+            val name = if (item.name.length > 24) item.name.take(23) + "…" else item.name
             canvas.drawText(name, colName, yText, rowPaint)
             canvas.drawText(item.karat.toString().toPersianDigits(), colKarat, yText, rowCenter)
             canvas.drawText(item.weightGrams.formatWeight(), colWeight, yText, rowCenter)
             canvas.drawText(item.quantity.toString().toPersianDigits(), colQty, yText, rowCenter)
-            canvas.drawText(item.lineTotal.toMoney(), colTotal, yText, paint(10f, regular, INK, Paint.Align.CENTER).apply { textAlign = Paint.Align.LEFT })
+            canvas.drawText(item.lineTotal.toMoney(), colTotal, yText, rowCenter)
             y += ROW_H
         }
 
