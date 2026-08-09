@@ -168,7 +168,7 @@ fun NewSaleContent(
                             )
                             state.draft.customer?.phone?.takeIf { it.isNotBlank() }?.let { phone ->
                                 Text(
-                                    text = format.digits(phone),
+                                    text = format.code(phone),
                                     style = MaterialTheme.typography.labelMedium,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                                 )

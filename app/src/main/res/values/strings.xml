@@ -14,15 +14,11 @@
     <string name="save">ذخیره</string>
     <string name="cancel">انصراف</string>
     <string name="delete">حذف</string>
-    <string name="edit">ویرایش</string>
     <string name="back">بازگشت</string>
     <string name="confirm">تأیید</string>
     <string name="add">افزودن</string>
-    <string name="close">بستن</string>
-    <string name="search">جستجو</string>
     <string name="note">توضیحات</string>
     <string name="optional">اختیاری</string>
-    <string name="more">بیشتر</string>
     <string name="rial">ریال</string>
     <string name="toman">تومان</string>
     <string name="gram">گرم</string>
@@ -62,7 +58,6 @@
     <string name="stock_qty">موجودی</string>
     <string name="apply_vat">مشمول مالیات بر ارزش افزوده</string>
     <string name="empty_products">هنوز کالایی ثبت نشده است</string>
-    <string name="product_deleted">کالا حذف شد</string>
     <string name="delete_product_confirm">این کالا حذف شود؟</string>
     <string name="in_stock">موجودی: %1$s</string>
     <string name="out_of_stock">ناموجود</string>
@@ -93,9 +88,7 @@
     <string name="customer">مشتری</string>
     <string name="items">اقلام فاکتور</string>
     <string name="add_item">افزودن قلم</string>
-    <string name="edit_item">ویرایش قلم</string>
     <string name="from_inventory">انتخاب از کالاها</string>
-    <string name="custom_item">قلم دستی</string>
     <string name="quantity">تعداد</string>
     <string name="line_total">مبلغ کل</string>
     <string name="discount">تخفیف</string>
@@ -108,7 +101,6 @@
     <string name="payment_credit">نسیه</string>
     <string name="submit_invoice">ثبت و صدور فاکتور</string>
     <string name="no_items">هنوز قلمی به فاکتور اضافه نشده است</string>
-    <string name="item_added">قلم به فاکتور اضافه شد</string>
     <string name="set_gold_rate_first">ابتدا نرخ روز طلا را در تنظیمات وارد کنید</string>
     <string name="add_at_least_one_item">حداقل یک قلم کالا اضافه کنید</string>
     <string name="mark_fully_paid">تسویه کامل</string>
@@ -140,10 +132,11 @@
     <string name="row">ردیف</string>
     <string name="description">شرح کالا</string>
     <string name="empty_invoices">هنوز فاکتوری صادر نشده است</string>
-    <string name="invoice_saved">فاکتور با موفقیت صادر شد</string>
     <string name="pdf_error">ساخت فایل PDF ناموفق بود</string>
     <string name="share_invoice_via">ارسال فاکتور با</string>
-    <string name="filter_all">همه</string>
+    <string name="seller_signature">امضای فروشنده</string>
+    <string name="buyer_signature">امضای خریدار</string>
+    <string name="page_of">صفحه %1$s از %2$s</string>
 
     <!-- تنظیمات -->
     <string name="settings_title">تنظیمات</string>
@@ -158,6 +151,5 @@
     <string name="invoice_prefix">پیش‌شماره فاکتور</string>
     <string name="persian_digits">نمایش اعداد با ارقام فارسی</string>
     <string name="settings_saved">تنظیمات ذخیره شد</string>
-    <string name="about">درباره برنامه</string>
     <string name="formula_help">فرمول محاسبه: (وزن × نرخ روز) + اجرت + سود + مالیات + نگین</string>
 </resources>

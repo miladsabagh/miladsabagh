@@ -21,6 +21,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -107,7 +108,7 @@ fun ProductEditForm(
     var code by remember(initial.id) { mutableStateOf(initial.code) }
     var category by remember(initial.id) { mutableStateOf(initial.category) }
     var pricingMode by remember(initial.id) { mutableStateOf(initial.pricingMode) }
-    var karat by remember(initial.id) { mutableStateOf(initial.karat) }
+    var karat by remember(initial.id) { mutableIntStateOf(initial.karat) }
     var weight by remember(initial.id) {
         mutableStateOf(if (initial.weightGrams == 0.0) "" else PersianNumbers.decimal(initial.weightGrams))
     }

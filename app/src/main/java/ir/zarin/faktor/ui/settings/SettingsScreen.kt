@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -205,6 +206,13 @@ fun SettingsContent(
         ) {
             Text(stringResource(R.string.save))
         }
+        Text(
+            text = "${stringResource(R.string.app_name)} — ${stringResource(R.string.app_tagline)}",
+            modifier = Modifier.fillMaxWidth(),
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            textAlign = TextAlign.Center,
+        )
         Spacer(Modifier.height(24.dp))
     }
 }

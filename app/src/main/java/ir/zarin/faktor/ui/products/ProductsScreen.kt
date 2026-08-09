@@ -79,7 +79,7 @@ fun ProductsContent(
 
     LazyColumn(
         modifier = modifier.fillMaxWidth(),
-        contentPadding = PaddingValues(16.dp),
+        contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 96.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         item {
@@ -208,7 +208,7 @@ private fun productSubtitle(product: Product): String {
     val format = LocalDisplayFormat.current
     val parts = buildList {
         add(product.category.label())
-        if (product.code.isNotBlank()) add(format.digits(product.code))
+        if (product.code.isNotBlank()) add(format.code(product.code))
         if (product.pricingMode == PricingMode.BY_WEIGHT) {
             add("${format.weight(product.weightGrams)} ${stringResource(R.string.gram)}")
             add("${stringResource(R.string.karat)} ${format.count(product.karat)}")

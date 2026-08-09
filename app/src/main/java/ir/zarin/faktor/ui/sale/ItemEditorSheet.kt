@@ -23,6 +23,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -30,6 +31,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import ir.zarin.faktor.R
 import ir.zarin.faktor.core.PersianNumbers
@@ -77,6 +79,7 @@ fun ItemEditorForm(
     products: List<Product>,
     onConfirm: (SaleLine) -> Unit,
     modifier: Modifier = Modifier,
+    maxHeight: Dp = 640.dp,
 ) {
     val format = LocalDisplayFormat.current
     var showProductPicker by remember { mutableStateOf(false) }
@@ -85,7 +88,7 @@ fun ItemEditorForm(
     var productId by remember(initial.key) { mutableStateOf(initial.productId) }
     var category by remember(initial.key) { mutableStateOf(initial.category) }
     var pricingMode by remember(initial.key) { mutableStateOf(initial.pricingMode) }
-    var karat by remember(initial.key) { mutableStateOf(initial.karat) }
+    var karat by remember(initial.key) { mutableIntStateOf(initial.karat) }
     var weight by remember(initial.key) {
         mutableStateOf(if (initial.weightGrams == 0.0) "" else PersianNumbers.decimal(initial.weightGrams))
     }
@@ -120,7 +123,7 @@ fun ItemEditorForm(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .heightIn(max = 640.dp)
+            .heightIn(max = maxHeight)
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 20.dp)
             .padding(bottom = 28.dp),

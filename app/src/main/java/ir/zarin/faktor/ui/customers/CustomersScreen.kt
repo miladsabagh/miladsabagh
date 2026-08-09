@@ -131,7 +131,7 @@ fun CustomersContent(
                         if (customer.phone.isNotBlank()) {
                             Spacer(Modifier.height(4.dp))
                             Text(
-                                text = format.digits(customer.phone),
+                                text = format.code(customer.phone),
                                 style = MaterialTheme.typography.labelMedium,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                             )

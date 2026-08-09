@@ -170,7 +170,7 @@ fun InvoiceDetailContent(
                         )
                         if (settings.shopPhone.isNotBlank()) {
                             Text(
-                                text = format.digits(settings.shopPhone),
+                                text = format.code(settings.shopPhone),
                                 style = MaterialTheme.typography.labelMedium,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                             )
@@ -181,7 +181,7 @@ fun InvoiceDetailContent(
                 SectionDivider()
                 KeyValueRow(
                     label = stringResource(R.string.invoice_number),
-                    value = format.digits(invoice.number),
+                    value = format.code(invoice.number),
                 )
                 KeyValueRow(
                     label = stringResource(R.string.invoice_date),
@@ -194,7 +194,7 @@ fun InvoiceDetailContent(
                 if (invoice.customerPhone.isNotBlank()) {
                     KeyValueRow(
                         label = stringResource(R.string.phone),
-                        value = format.digits(invoice.customerPhone),
+                        value = format.code(invoice.customerPhone),
                     )
                 }
                 KeyValueRow(

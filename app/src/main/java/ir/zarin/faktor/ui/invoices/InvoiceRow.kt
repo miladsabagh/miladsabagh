@@ -54,7 +54,7 @@ fun InvoiceRow(
                 )
                 Spacer(Modifier.height(4.dp))
                 Text(
-                    text = "${stringResource(R.string.invoice_number)} ${format.digits(invoice.number)}" +
+                    text = "${stringResource(R.string.invoice_number)} ${format.code(invoice.number)}" +
                         " • ${format.date(invoice.dateMillis)}",
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,

@@ -192,7 +192,10 @@ fun StatusChip(text: String, color: Color, modifier: Modifier = Modifier) {
     }
 }
 
-/** فیلد متنی عددی که ارقام فارسی را هم می‌پذیرد. */
+/**
+ * فیلد متنی عددی که ارقام را با ارقام فارسی نمایش می‌دهد ولی مقدار را همیشه
+ * با ارقام لاتین به [onValueChange] می‌دهد؛ ورودی فارسی، عربی و لاتین پذیرفته می‌شود.
+ */
 @Composable
 fun NumericField(
     value: String,
@@ -204,8 +207,9 @@ fun NumericField(
     enabled: Boolean = true,
     supportingText: String? = null,
 ) {
+    val format = LocalDisplayFormat.current
     OutlinedTextField(
-        value = value,
+        value = if (format.persianDigits) PersianNumbers.toPersianDigits(value) else value,
         onValueChange = { input ->
             val normalized = PersianNumbers.toLatinDigits(input)
                 .filter { it.isDigit() || (decimal && it == '.') }

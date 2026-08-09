@@ -194,7 +194,7 @@ fun CustomerPickerSheet(
                             .fillMaxWidth()
                             .clickable { onSelect(customer) },
                         headlineContent = { Text(customer.name) },
-                        supportingContent = { Text(format.digits(customer.phone)) },
+                        supportingContent = { Text(format.code(customer.phone)) },
                     )
                     HorizontalDivider()
                 }
