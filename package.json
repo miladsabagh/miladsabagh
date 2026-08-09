@@ -1,0 +1,42 @@
+{
+  "name": "gold-invoice-android",
+  "version": "1.0.0",
+  "description": "Android-ready Expo app for selling gold and jewelry with Persian invoice generation.",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "web": "expo start --web",
+    "test": "node --test test/*.test.js",
+    "build:web": "expo export --platform web"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miladsabagh/miladsabagh.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miladsabagh/miladsabagh/issues"
+  },
+  "homepage": "https://github.com/miladsabagh/miladsabagh#readme",
+  "dependencies": {
+    "@expo/metro-runtime": "^57.0.8",
+    "expo": "^57.0.11",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "^0.86.2",
+    "react-native-web": "^0.21.2"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "typescript": "~6.0.3"
+  },
+  "overrides": {
+    "image-size": "^2.0.2",
+    "uuid": "^11.1.1"
+  }
+}

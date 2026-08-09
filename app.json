@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "طلای میلاد",
+    "slug": "milad-gold-invoice",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "miladgold",
+    "userInterfaceStyle": "light",
+    "android": {
+      "package": "com.miladsabagh.goldinvoice",
+      "adaptiveIcon": {
+        "backgroundColor": "#1F1308"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single"
+    },
+    "plugins": []
+  }
+}
