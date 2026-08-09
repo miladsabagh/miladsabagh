@@ -1390,7 +1390,6 @@ const styles = StyleSheet.create({
     fontSize: 11.5,
     textAlign: 'right',
     writingDirection: 'rtl',
-    outlineStyle: 'none',
   },
   filterChips: {
     paddingVertical: 17,
