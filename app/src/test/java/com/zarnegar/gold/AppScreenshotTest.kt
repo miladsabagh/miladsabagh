@@ -67,6 +67,13 @@ class AppScreenshotTest {
         }
     }
 
+    private fun waitUntilTextGone(text: String) {
+        composeRule.waitUntil(timeoutMillis = 30_000) {
+            composeRule.onAllNodesWithText(text, substring = true)
+                .fetchSemanticsNodes().isEmpty()
+        }
+    }
+
     private fun back() {
         composeRule.onAllNodesWithContentDescription("بازگشت").onFirst().performClick()
         composeRule.waitForIdle()
@@ -105,9 +112,10 @@ class AppScreenshotTest {
         composeRule.onAllNodesWithText("افزودن", substring = true)[1].performClick()
         composeRule.waitForIdle()
 
-        // ۵) صفحهٔ صدور فاکتور با سبد پر
+        // ۵) صفحهٔ صدور فاکتور با سبد پر (پس از محو شدن پیام «افزوده شد»)
         composeRule.onNodeWithText("فروش").performClick()
         waitForText("اقلام فاکتور")
+        waitUntilTextGone("به فاکتور اضافه شد")
         capture("04_new_sale")
         scrollTo("جمع‌بندی فاکتور")
         capture("05_sale_totals")
