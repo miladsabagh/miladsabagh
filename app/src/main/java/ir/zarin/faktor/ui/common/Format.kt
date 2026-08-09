@@ -29,6 +29,9 @@ data class DisplayFormat(
     fun digits(text: String): String =
         if (persianDigits) PersianNumbers.toPersianDigits(text) else text
 
+    /** شناسه‌هایی مانند شماره فاکتور، تلفن و کد کالا که باید چپ‌به‌راست بمانند. */
+    fun code(text: String): String = PersianNumbers.isolateLtr(digits(text))
+
     fun date(millis: Long): String = digits(JalaliCalendar.fromEpochMillis(millis).format())
 
     fun dateLong(millis: Long): String = digits(JalaliCalendar.fromEpochMillis(millis).formatLong())

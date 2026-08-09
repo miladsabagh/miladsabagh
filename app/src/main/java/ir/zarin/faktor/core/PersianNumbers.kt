@@ -8,6 +8,19 @@ object PersianNumbers {
     private val PERSIAN_DIGITS = charArrayOf('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹')
     private val ARABIC_DIGITS = charArrayOf('٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩')
 
+    private const val LTR_ISOLATE = '\u2066'
+    private const val POP_DIRECTIONAL_ISOLATE = '\u2069'
+
+    /**
+     * شناسه‌هایی مانند «۱۴۰۵۰۵-۰۰۱» یا شماره تلفن را در یک قطعه چپ‌به‌راست محصور می‌کند.
+     *
+     * در متن فارسی، ارقام به «عدد عربی» تبدیل می‌شوند و خط تیره میان آن‌ها جداکننده خنثی
+     * به حساب می‌آید؛ در نتیجه دو بخش عدد جابه‌جا نمایش داده می‌شوند. محصور کردن در
+     * قطعه چپ‌به‌راست ترتیب منطقی را حفظ می‌کند.
+     */
+    fun isolateLtr(input: String): String =
+        if (input.isEmpty()) input else "$LTR_ISOLATE$input$POP_DIRECTIONAL_ISOLATE"
+
     fun toPersianDigits(input: String): String = buildString(input.length) {
         for (ch in input) {
             if (ch in '0'..'9') append(PERSIAN_DIGITS[ch - '0']) else append(ch)
