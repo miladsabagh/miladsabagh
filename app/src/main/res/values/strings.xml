@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">طلا و جواهر</string>
+    <string name="nav_home">خانه</string>
+    <string name="nav_products">محصولات</string>
+    <string name="nav_invoice">فاکتور</string>
+    <string name="nav_customers">مشتریان</string>
+    <string name="nav_settings">تنظیمات</string>
+</resources>
