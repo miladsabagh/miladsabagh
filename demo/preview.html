@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>زرین — پیش‌نمایش</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --night: #0b0b0c;
+      --elevated: #161418;
+      --soft: #1e1a1c;
+      --amber: #d4af37;
+      --amber-soft: #e8d48b;
+      --ivory: #f6f0e4;
+      --muted: #b8afa0;
+      --line: rgba(212, 175, 55, 0.2);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #1a1714;
+      color: var(--ivory);
+      font-family: "Vazirmatn", sans-serif;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    .phone {
+      width: 390px;
+      height: 780px;
+      border-radius: 36px;
+      overflow: hidden;
+      position: relative;
+      background:
+        radial-gradient(circle at 25% 15%, rgba(212,175,55,.22), transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(196,139,122,.14), transparent 35%),
+        linear-gradient(180deg, #14110f, #0b0b0c 45%, #120e12);
+      border: 1px solid rgba(212,175,55,.35);
+      box-shadow: 0 30px 80px rgba(0,0,0,.55);
+      display: flex;
+      flex-direction: column;
+    }
+    .screen { flex: 1; overflow: auto; padding: 28px 20px 12px; }
+    .hero {
+      height: 250px;
+      border-radius: 28px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(180deg, #2c2418, #121014);
+      border: 1px solid rgba(212,175,55,.35);
+      animation: rise .7s ease both;
+    }
+    .brand {
+      font-family: "Playfair Display", serif;
+      font-size: 48px;
+      color: var(--amber-soft);
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+    .brand small {
+      display: block;
+      margin-top: 6px;
+      font-family: "Vazirmatn", sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+    .headline {
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+      margin: 0 0 8px;
+    }
+    .sub { color: var(--muted); font-size: 13px; line-height: 1.7; margin: 0; }
+    .ribbon {
+      margin-top: 16px;
+      border-radius: 20px;
+      padding: 16px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #2a2216, #1a1612, #2a2216);
+      border: 1px solid rgba(212,175,55,.35);
+      animation: rise .8s .1s ease both;
+    }
+    .ribbon label { display:block; color: var(--muted); font-size: 12px; }
+    .ribbon strong {
+      display:block; margin-top: 4px;
+      color: var(--amber-soft);
+      font-family: "Playfair Display", serif;
+      font-size: 18px;
+    }
+    .badge {
+      width: 52px; height: 52px; border-radius: 50%;
+      display: grid; place-items: center;
+      border: 1px solid rgba(212,175,55,.4);
+      color: var(--amber); font-weight: 700;
+      background: radial-gradient(circle, rgba(212,175,55,.25), transparent 70%);
+    }
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+      animation: rise .85s .15s ease both;
+    }
+    .action {
+      background: rgba(22,20,24,.9);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px 8px;
+      text-align: center;
+    }
+    .dot {
+      width: 42px; height: 42px; border-radius: 50%;
+      margin: 0 auto 8px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, #9a7b2f, #d4af37);
+      color: #0b0b0c; font-size: 18px;
+    }
+    .action span { font-size: 12px; }
+    .section-title {
+      margin: 20px 0 10px;
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+      animation: rise .9s .2s ease both;
+    }
+    .card {
+      background: rgba(30,26,28,.8);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      animation: rise 1s .25s ease both;
+    }
+    .card h4 { margin: 0 0 4px; font-size: 14px; font-weight: 600; }
+    .card p { margin: 0; color: var(--muted); font-size: 11px; }
+    .card b { color: var(--amber-soft); font-size: 12px; }
+    .nav {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+      padding: 10px 8px 18px;
+      background: rgba(22,20,24,.96);
+      border-top: 1px solid var(--line);
+    }
+    .nav button {
+      border: 0; background: transparent; color: var(--muted);
+      font-family: inherit; font-size: 11px; padding: 8px 2px;
+      border-radius: 12px;
+    }
+    .nav button.active {
+      background: var(--amber);
+      color: var(--night);
+      font-weight: 700;
+    }
+    .hidden { display: none; }
+    .field {
+      width: 100%;
+      margin-bottom: 10px;
+      background: rgba(22,20,24,.7);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: var(--ivory);
+      padding: 14px;
+      font-family: inherit;
+    }
+    .gold-btn {
+      width: 100%;
+      border: 0;
+      border-radius: 14px;
+      padding: 14px;
+      background: var(--amber);
+      color: var(--night);
+      font-family: inherit;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+    .item {
+      display: flex; gap: 12px; align-items: center;
+      background: rgba(22,20,24,.9);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    .thumb {
+      width: 54px; height: 54px; border-radius: 14px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, #3a2e1a, #1a1612);
+      border: 1px solid rgba(212,175,55,.3);
+      color: var(--amber-soft);
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+    }
+    .add {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--amber); color: var(--night);
+      display: grid; place-items: center; font-size: 22px; font-weight: 700;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="phone" id="app">
+    <div class="screen" id="home">
+      <div class="hero">
+        <div class="brand">زرین<small>گالری طلا و جواهر</small></div>
+        <div>
+          <h1 class="headline">درخشش در هر فاکتور</h1>
+          <p class="sub">فروش طلا و جواهر با صدور فاکتور رسمی، دقیق و سریع.</p>
+        </div>
+      </div>
+      <div class="ribbon">
+        <div>
+          <label>نرخ لحظه‌ای طلای ۱۸ عیار</label>
+          <strong>۴۲٬۵۰۰٬۰۰۰ ریال</strong>
+        </div>
+        <div class="badge">۱۸</div>
+      </div>
+      <div class="actions">
+        <div class="action"><div class="dot">◇</div><span>کاتالوگ</span></div>
+        <div class="action"><div class="dot">☰</div><span>فاکتور جدید</span></div>
+        <div class="action"><div class="dot">◷</div><span>سوابق</span></div>
+      </div>
+      <h3 class="section-title">آخرین فاکتورها</h3>
+      <div class="card">
+        <div>
+          <h4>سارا محمدی</h4>
+          <p>ZR-20260809-001 · ۱۴۰۵/۰۵/۱۸</p>
+        </div>
+        <b>۱۸۶٬۴۵۰٬۰۰۰ ریال</b>
+      </div>
+      <div class="card">
+        <div>
+          <h4>علی رضایی</h4>
+          <p>ZR-20260809-002 · ۱۴۰۵/۰۵/۱۸</p>
+        </div>
+        <b>۹۴٬۲۰۰٬۰۰۰ ریال</b>
+      </div>
+    </div>
+
+    <div class="screen hidden" id="catalog">
+      <h2 class="headline" style="margin-bottom:4px">کاتالوگ زرین</h2>
+      <p class="sub" style="margin-bottom:14px">انتخاب کالا برای افزودن به فاکتور</p>
+      <input class="field" value="جستجوی نام کالا" readonly />
+      <div class="item">
+        <div class="thumb">ا</div>
+        <div style="flex:1">
+          <h4 style="margin:0 0 4px">انگشتر کلاسیک یارا</h4>
+          <p class="sub">انگشتر · ۱۸ عیار · ۴٫۲ گرم</p>
+          <b style="color:var(--amber-soft);font-size:13px">تخمین: ۲۳۸٬۴۰۰٬۰۰۰ ریال</b>
+        </div>
+        <div class="add">+</div>
+      </div>
+      <div class="item">
+        <div class="thumb">گ</div>
+        <div style="flex:1">
+          <h4 style="margin:0 0 4px">گردنبند ستاره</h4>
+          <p class="sub">گردنبند · ۱۸ عیار · ۸٫۶ گرم</p>
+          <b style="color:var(--amber-soft);font-size:13px">تخمین: ۴۸۲٬۷۵۰٬۰۰۰ ریال</b>
+        </div>
+        <div class="add">+</div>
+      </div>
+      <div class="item">
+        <div class="thumb">س</div>
+        <div style="flex:1">
+          <h4 style="margin:0 0 4px">سکه بهار آزادی</h4>
+          <p class="sub">سکه · ۲۲ عیار · ۸٫۱۳ گرم</p>
+          <b style="color:var(--amber-soft);font-size:13px">تخمین: ۳۹۱٬۲۰۰٬۰۰۰ ریال</b>
+        </div>
+        <div class="add">+</div>
+      </div>
+    </div>
+
+    <div class="screen hidden" id="invoice">
+      <h2 class="headline" style="margin-bottom:4px">صدور فاکتور</h2>
+      <p class="sub" style="margin-bottom:14px">مشتری، اقلام و تخفیف را مشخص کنید</p>
+      <input class="field" value="سارا محمدی" readonly />
+      <input class="field" value="۰۹۱۲۱۲۳۴۵۶۷" readonly />
+      <div class="item">
+        <div style="flex:1">
+          <h4 style="margin:0 0 4px">انگشتر کلاسیک یارا</h4>
+          <p class="sub">۱۸ عیار · ۴٫۲ گرم · تعداد ۱</p>
+        </div>
+        <b style="color:var(--amber-soft)">۲۳۸٬۴۰۰٬۰۰۰</b>
+      </div>
+      <div class="card" style="flex-direction:column;align-items:stretch;gap:8px">
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--muted)">جمع جزء</span><span>۲۳۸٬۴۰۰٬۰۰۰</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--muted)">مالیات ۹٪</span><span>۲۱٬۴۵۶٬۰۰۰</span></div>
+        <div style="display:flex;justify-content:space-between"><span>مبلغ نهایی</span><b style="color:var(--amber-soft)">۲۵۹٬۸۵۶٬۰۰۰ ریال</b></div>
+      </div>
+      <button class="gold-btn">ثبت و صدور فاکتور</button>
+    </div>
+
+    <nav class="nav">
+      <button class="active" data-screen="home">خانه</button>
+      <button data-screen="catalog">کالاها</button>
+      <button data-screen="invoice">فاکتور</button>
+      <button data-screen="home">سوابق</button>
+      <button data-screen="home">نرخ</button>
+    </nav>
+  </div>
+  <script>
+    const screens = ["home", "catalog", "invoice"];
+    document.querySelectorAll(".nav button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.screen;
+        screens.forEach((s) => document.getElementById(s).classList.toggle("hidden", s !== id));
+        document.querySelectorAll(".nav button").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.ZarinGold" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">#0B0B0C</item>
+        <item name="android:navigationBarColor">#0B0B0C</item>
+        <item name="android:windowBackground">#0B0B0C</item>
+        <item name="android:forceDarkAllowed">false</item>
+    </style>
+</resources>
